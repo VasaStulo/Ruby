@@ -1,0 +1,66 @@
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <h3>Список тестов</h3>
+        </div>
+
+      <div class="large-12 cell">
+      <% form({method: :get},{obj: @params}) do |f|%>
+        <div class="grid-x grid-padding-x">
+          <%if @params.failure?%>
+              <div class="large-12 cell callout warning">
+              <p>
+              Параметры фильтра введены неверно
+              </p>
+              </div>
+            <%end%>
+
+
+            <div class="large-6 cell">
+                <%= f.input(:date, type: :text, placeholder: '2020-04-05',label:'Дата теста') %>
+            </div>
+
+            <div class="large-6 cell">
+               <%= f.input(:duration, type: :text, placeholder: 'Проверка',label: 'Описание') %>
+            </div>
+
+            <div class="large-12 cell">
+              <%= f.button(value: 'Фильтровать',class: 'button') %>
+            </div>
+        </div>
+    <%end%>
+  </div>
+
+  </form>
+
+    <div class="large-12 cell">
+      <a href="tests/new" class="button">Добавить тест</a>
+    </div>
+
+
+   <div class="large-12 cell">
+    <%if @filter_tests.empty?%>
+    <div class="callout">
+    Согласно вашему фильтру никаких тестов не было найдено
+    </div>
+    <%else%>
+      <table>
+       <thead>
+        <tr>
+          <th>Название</th>
+          <th>Дата</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @filter_tests.each do |test|%>
+          <tr>
+            <td><%= test.name%></td>
+            <td><%= test.date%></td>
+            <td><%= test.description%></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+       <% end %>
+    </div>
+  </div>

@@ -1,0 +1,30 @@
+<div class="grid-x grid-padding-x">
+    
+    <div class="large-6 cell">
+    <h3>Выберите фильтр</h3>
+    <form method="get">
+    <input class="button small medium-only-expanded" type="submit" name="type" value="Школа"/>
+    <input class="button small medium-only-expanded" type="submit" name="type" value="Лицей"/>
+    <input class="button small medium-only-expanded" type="submit" name="type" value="Гимназия"/>
+    </form>
+    
+    </div>
+
+    <div class="large-12 cell">
+    <h4>Список школ</h4>
+    </div>
+    <table>
+       <thead>
+        <tr>
+          <th>Учебное заведение</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@filter_schools.each do |school|%>
+          <tr>
+            <td><a href="/school/<%=school.id%>"> <%=school.type%> №<%=school.number%></a></td>
+          </tr>
+          <% end %>
+      </tbody>
+      </table>
+</div>

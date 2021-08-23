@@ -1,0 +1,30 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h4>Информация об учебном заведении</h4>
+    <p>Название: <%=@school.type%> №<%=@school.number%></p>
+    <p>Общее количество учеников в школе: <%=@count_girl +@count_boys%> </p>
+    <p>Количество девочек: <%=@count_girl%></p>
+    <p>Количество мальчиков: <%=@count_boys%></p>
+  </div>
+  <div class="large-12 cell">
+  <form method="get">
+      <input class="hollow button" type="submit" name="arrow" value="<%=@sort%>"/>
+  </form>
+
+    <table>
+       <thead>
+        <tr>
+          <th>Список классов</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@sort_grade.each do |grade|%>
+          <tr>
+            <td><a href="/school/<%=@school.id%>/class/<%=grade.id%>"> <%=grade.numb%><%=grade.letter%></a></td>
+          </tr>
+          <% end %>
+      </tbody>
+      </table>
+      <a class="button secondary" href="/">Назад</a>
+    </div>
+</div>

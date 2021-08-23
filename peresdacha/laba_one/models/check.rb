@@ -1,0 +1,1 @@
+Check = Struct.new(:id, :date, :time, :place, :number, :products_list)

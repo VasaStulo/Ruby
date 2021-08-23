@@ -1,0 +1,27 @@
+<div class="cell large-12">
+  <h3>Список чеков</h3>
+   <a class="button" href="/checks/new">Добавить</a>
+  <a class="button secondary" href="/main">Назад</a>
+</div>
+ 
+<div class="grid-x grid-margin-x">
+<%@checks.each do|check|%>
+<div class="card cell large-4">
+  <div class="card-divider">
+    <p> Чек от <%=check.date%> <%=check.time%></p>
+  </div>
+  <div class="card-section">
+    <p>Магазин: <%=check.place%></p>
+
+      <%check.products_list.all_products.each do |pr| %>
+        <p><%=pr.numb%>. <%=pr.name%>, <%=pr.cost%> руб.<p>
+    <%end%>
+    <p>Всего: <%=check.products_list.all_products.map{|pr| pr.cost}.sum%> </p> 
+  </div>
+  <p>
+    <a class="button" href="/checks/<%=check.id%>">Подробнее</a>
+    <a class="button alert" href="/checks/<%=check.id%>/delete">Удалить</a>
+  </p>
+</div>
+<%end%>
+</div>

@@ -1,0 +1,33 @@
+<div class="cell large-12">
+  <h3>Анализ трат по категориям</h3>
+  <%=render('_filter_form',locals:{form_type: 'Посмотреть траты',back_location: "/analiz_category"})%>
+  <a class="button secondary" href="/main">Назад</a>
+  <p>Фильтрация будет только по жанру</p>
+</div>
+ <table>
+ <thead>
+    <tr>
+      <th >Дата</th>
+      <th>Место</th>
+      <th>Товар</th>
+      <th>Колличество</th>
+      <th>Цена</th>
+    </tr>
+  </thead>
+      
+  <tbody>
+
+    <%@checks.each do|check|%>
+    <%check.products_list.all_products.each do |id, product| %>
+        <%p product%>
+    <tr>
+
+      <td><%=product.name%></td>
+        <td><%=product.quantity%></td>
+        <td><%=product.cost%></td>
+    </tr>
+    <%end%>
+    <%end%>
+    
+  </tbody>
+</table>

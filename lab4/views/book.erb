@@ -1,0 +1,16 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о книге</h3>
+    <p>Название: <%= @book.title%></p>
+    <p>Автор: <%= @book.initials_author%><%= @book.author_surname%></p>
+    <p>Инвентаризационный номер: <%= @book.number%></p>
+    <p>Жанр: <%= @book.genre%></p>
+    <p>Возрастной рейтинг: <%= @book.age_rating%>+</p>
+    <p>Количество книг в библиотеке: <%= @book.count_library%></p>
+    <p>Количество книг на руках: <%= @book.count_hands%></p>
+
+
+    <a class="button secondary" href="/books">Назад к списку</a>
+    <a class="button warning" href="<%="#{@book.id}"%>/delete">Удалить</a>
+  </div>
+</div>

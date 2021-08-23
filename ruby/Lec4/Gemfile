@@ -1,0 +1,4 @@
+source 'https://rubygems.org' # указывает источник для получения джемa
+
+gem 'rubocop', require: false
+gem 'write_xlsx', '~> 1.7'

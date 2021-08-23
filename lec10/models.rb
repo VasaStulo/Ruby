@@ -1,0 +1,5 @@
+require_relative 'models/test'
+require_relative 'models/test_list'
+require_relative 'models/filter_form_schema'
+require_relative 'models/dry_scheme_forme_adapter'
+require_relative 'models/new_test_form_schema'

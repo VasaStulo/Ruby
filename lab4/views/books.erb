@@ -1,0 +1,49 @@
+<div class="cell large-12">
+  <h3>Список книг</h3>
+  <a class="button" href="/books/new">Добавить</a>
+  <a class="button secondary" href="/library">Назад</a>
+</div>
+
+<div class="large-12 cell">
+  <% form({ method: :get }, { obj: @params }) do |f| %>
+
+  <div class="grid-x grid-margin-x">
+    <% if @params.failure? %>
+    <div class="large-12 cell callout warning">
+      <p> Параметры фильтра введены неверно, данные не были отфильтрованы</p>
+    </div>
+    <% end %>
+
+    <div class="large-6 cell">
+      <%= f.input(:genre, type: :text, placeholder: 'Пьеса', label: 'Жанр') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: 'Фильтровать', class: 'hollow button') %>
+    </div>
+    <% end %>
+
+    <% if @filter_books.empty? %>
+    <div class="large-12 cell">
+      <div class="callout">Согласно вашему фильтру никаких книг не было найдено</div>
+    </div>
+
+  </div>
+  <% end %>
+
+
+  <% @filter_books.each do |book|%>
+  <div class=" card cell large-4">
+    <div class="card-divider">
+      <%=book.title%> <%=book.number%>
+    </div>
+    <div class="card-section">
+      <p><%=book.initials_author%><%=book.author_surname%></p>
+      <p>
+        <a class="button" href="/books/<%=book.id%>">Информация о книге</a>
+      </p>
+    </div>
+  </div>
+
+  <%end%>
+
+</div>

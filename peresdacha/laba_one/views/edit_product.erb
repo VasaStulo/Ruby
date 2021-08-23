@@ -1,0 +1,34 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Список продуктов в чеке</h3>
+    <table>
+  <thead>
+    <tr>
+      <th >Номер</th>
+      <th>Название</th>
+      <th>Стоимость ед.</th>
+      <th>Колличество</th>
+      <th>Категория</th>
+      <th>Удалить</th>
+    </tr>
+  </thead>
+      
+  <tbody>
+  <%@check.products_list.all_products.each do |pr| %>
+    <tr>
+  
+      <td><%=pr.numb%></td>
+      <td><%=pr.name%></td>
+      <td><%=pr.cost%></td>
+      <td><%=pr.quantity%></td>
+      <td><%=pr.category%></td>
+      <td><a class="button alert" href="/delete">Удалить</a></td>
+
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+    <a class="button secondary" href="/checks">Назад к списку</a>
+  </div>
+</div>

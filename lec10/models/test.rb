@@ -1,0 +1,1 @@
+Test =  Struct.new(:name, :date, :description)

@@ -1,0 +1,16 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Был совершен возврат книги читателем: <%= @reader.surname%> <%= @reader.name%> <%= @reader.patronymic%></h3>
+  </div>
+  <div class="cell large-12">
+    <h4>Дата возврата: </h4>
+  </div>
+  <div class="cell large-12">
+    <h4>Книга возвращена: </h4>
+  </div>
+  <div class="cell large-12">
+    <h4>Штраф составит: (рублей)</h4>
+  </div>
+  <a class="button secondary" href="/readers/<%="#{@reader.id}"%>">Назад к читателю</a>
+
+</div>

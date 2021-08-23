@@ -1,0 +1,20 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список читателей</h3>
+    <a class="button" href="readers/new">Добавить читателя</a>
+    <a class="button secondary" href="/library">Назад</a>
+  </div>
+  <% @readers_list.each do |reader|%>
+  <div class=" card cell large-4">
+    <div class="card-divider">
+      <%=reader.surname%> <%=reader.name%> <%=reader.patronymic%>
+    </div>
+    <div class="card-section">
+      <p><%=reader.birthday%></p>
+      <p>
+        <a class="button" href="/readers/<%=reader.id%>">Информация о читателе</a>
+      </p>
+    </div>
+  </div>
+  <%end%>
+</div>

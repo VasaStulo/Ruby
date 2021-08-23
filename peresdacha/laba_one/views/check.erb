@@ -1,0 +1,16 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о чеке</h3>
+  
+    <p>Дата: <%= @check.date%></p>
+    <p> Магазин: <%= @check.place%></p>
+    <p>Товары в чеке: 
+
+      <%@check.products_list.all_products.each do |pr| %>
+          <p><%=pr.numb%>. <%=pr.name%>, <%=pr.cost%> руб.<p>
+      <%end%>
+      <p>Всего: <%=@check.products_list.all_products.map{|pr| pr.cost}.sum%> </p>
+    <a class="button warning" href="/checks/<%= @check.id %>/edit">Редактировать список товаров</a>
+    <a class="button secondary" href="/checks">Назад к списку</a>
+  </div>
+</div>

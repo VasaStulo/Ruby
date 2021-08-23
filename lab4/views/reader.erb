@@ -1,0 +1,67 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о читателе</h3>
+    <div class="grid-x grid-margin-x">
+      <div class="cell small-4"> <a class="button" href="<%="#{@reader.id}"%>/delete">Удалить</a>
+        <a class="button secondary" href="/readers">Назад к списку</a>
+        <a class="button warning" href="<%="#{@reader.id}"%>/book_add">Добавить книгу читателю</a>
+      </div>
+      <div class="cell auto">
+        <form method="get">
+          <label>Выберите жанр
+            <select>
+              <option name="genre" value="blank"></option>
+              <%@list_genre.each do |genre|%>
+              <option name="genre" value="<%=genre%>"><%=genre%></option>
+              <%end%>
+            </select>
+          </label>
+          <label>Выберите автора
+            <select>
+              <option name="author" value="blank"></option>
+              <%@list_author.each do |author|%>
+              <option name="author" value="<%=author%>"><%=author%></option>
+              <%end%>
+            </select>
+          </label>
+          <a class="button success" href="<%="#{@reader.id}"%>/filter_books">Фильтровать</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell large-12">
+    <p>Фамилия: <%= @reader.surname%></p>
+    <p>Имя: <%= @reader.name%></p>
+    <p>Отчество: <%= @reader.patronymic%></p>
+    <p>Дата рождения: <%= @reader.birthday%></p>
+
+    <% if @own_books_list.size == 0 %>
+    <div class="cell large-12 callout warning">
+      У читателя нет взятых книг
+    </div>
+    <% else%>
+    <table>
+      <thead>
+        <tr>
+          <th>Список взятых книг</th>
+          <th>Название</th>
+          <th>Дата возврата</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@own_books_list.each do |id, book|%>
+        <tr>
+          <td><%=book[0].initials_author%><%=book[0].author_surname%></td>
+          <td><%=book[0].title%></td>
+          <td><%=book[1]%></td>
+          <td><a class="button alert" href="<%="#{@reader.id}"%>/penalty">Возвратить книгу</a></td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+    <%end%>
+
+  </div>
+</div>

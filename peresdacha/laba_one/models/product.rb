@@ -1,0 +1,1 @@
+Product = Struct.new(:id, :numb, :name, :cost, :quantity, :category)

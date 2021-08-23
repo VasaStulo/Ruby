@@ -1,0 +1,14 @@
+<% form({method: :post},{obj: @parameters}) do |f|%>
+<div class="grid-x grid-margin-x">
+  <div class="large-12 cell">
+    <%= f.input(:number, type: :text, label:'Инвентаризационный номер',placeholder:'786543-1')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.input(:date, type: :date, label:'Дата возврата',placeholder:'2021-06-21')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.button(value: form_type,class: 'button')%>
+    <a href="<%= back_location %>" class="button secondary">Отмена</a>
+  </div>
+</div>
+<%end%>

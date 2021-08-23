@@ -1,0 +1,19 @@
+<% form({method: :post},{obj: @parameters}) do |f|%>
+<div class="grid-x grid-margin-x">
+    <div class="large-4 cell">
+    <%=f.input(:category, type: :text, label:'Еда',placeholder:'Пельмешки')%>
+  </div>
+
+  <div class="large-4 cell">
+    <%= f.input(:start_date, type: :date, label:'Время начала',placeholder:'2021-08-14')%>
+  </div>
+
+  <div class="large-4 cell">
+    <%= f.input(:end_date, type: :date, label:'Время начала',placeholder:'2021-08-14')%>
+  </div>
+
+   <div class="large-4 cell">
+    <%= f.button(value: form_type,class: 'button')%>
+  </div>
+</div>
+<%end%>
