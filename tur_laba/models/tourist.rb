@@ -1,0 +1,1 @@
+Tourist = Struct.new(:id, :surname, :name, :patronymic, :list_of_wishes)

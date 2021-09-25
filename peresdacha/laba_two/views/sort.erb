@@ -1,0 +1,11 @@
+<div class="cell large-12">
+  <h3>Сортировка чисел</h3>
+  <%=render('_sort_form',locals:{form_type: 'Отсортировать',back_location: "/menu"})%>
+  <a class="button secondary" href="/main">Назад</a>
+  <p></p>
+  <%@numb_sort.each do |numb|%>
+  <ul><li><%=numb%></li></ul>
+  <%end%>
+  
+
+</div>

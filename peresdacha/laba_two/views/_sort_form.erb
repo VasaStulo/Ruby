@@ -1,0 +1,12 @@
+<% form({method: :post},{obj: @parameters}) do |f|%>
+<div class="grid-x grid-margin-x">
+    <div class="large-4 cell">
+    <%=f.input(:numbers, type: :text, label:'Список чисел через запятую',placeholder:'20,22,121,98')%>
+  </div>
+<%# надо бы свою форму чделать число,число, число %>
+  <div class="large-4 cell">
+    <%= f.button(value: form_type,class: 'button')%>
+  </div>
+  
+</div>
+<%end%>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# require 'delegate'
+require 'delegate'
 require 'forme'
 
 # The class for the correct operation of the form
