@@ -15,6 +15,8 @@ class App < Roda
     plugin :public
     opts[:serve_static] = true
   end
+
+  opts[:tours] = TourList.new
    
   route do |r|
     r.public if [:serve_static]
