@@ -22,7 +22,7 @@ class TouristList
     @tourist_list = @tourist_list.map do |tourist|
       [tourist.id, tourist]
     end.to_h
-    p @tourist_list
+    # p @tourist_list
   end
 
   def push_to_tourists(id, row)
@@ -45,5 +45,7 @@ class TouristList
         [wish_id, wish]
     end.to_h
   end
+
+
 
 end

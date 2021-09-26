@@ -1,0 +1,22 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список туров</h3>
+    <a class="button" href="tours/new">Добавить тур</a>
+    <a class="button secondary" href="/menu">Назад</a>
+  </div>
+  <% @tour_list.each do |tour, id|%>
+  <div class=" card cell large-4">
+    <div class="card-divider">
+      <%=tour.country%>, <%=tour.city%>
+    </div>
+    <div class="card-section">
+      <p>Вид транспорта: <%=tour.transport%></p>
+      <p>Стоимость: <%=tour.cost%> руб. </p>
+      <p>Макс. количество людей: <%=tour.max_people%></p>
+      <p>
+        <a class="button" href="/tours/<%=tour.id%>">Подробнее</a>
+      </p>
+    </div>
+  </div>
+  <%end%>
+</div>

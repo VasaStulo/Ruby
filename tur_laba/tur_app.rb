@@ -29,5 +29,18 @@ class App < Roda
     r.on 'menu' do
        view('menu')
     end
+
+    r.on 'tours' do
+      r.is do
+        p  opts[:tours]
+        @tour_list = opts[:tours].all_tours
+      view('tours')
+      end
+
+    end
+
+    
+
+
   end
 end

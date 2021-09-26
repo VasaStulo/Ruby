@@ -22,7 +22,7 @@ class TourList
     @tour_list = @tour_list.map do |tour|
       [tour.id, tour]
     end.to_h
-    p @tour_list
+    # p @tour_list
   end
 
   def push_to_tours(id, row)
@@ -46,5 +46,7 @@ class TourList
     end.to_h
   end
 
-
+  def all_tours
+    @tour_list.values
+  end
 end
