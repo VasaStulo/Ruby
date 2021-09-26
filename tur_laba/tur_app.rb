@@ -32,9 +32,18 @@ class App < Roda
 
     r.on 'tours' do
       r.is do
-        p  opts[:tours]
+        # p  opts[:tours]
         @tour_list = opts[:tours].all_tours
       view('tours')
+      end
+
+    end
+
+    r.on 'tourists' do
+      r.is do
+        # p  opts[:tours]
+        @tourist_list = opts[:tourists].all_tourists
+      view('tourists')
       end
 
     end

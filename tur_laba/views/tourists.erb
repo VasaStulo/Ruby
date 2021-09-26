@@ -1,0 +1,19 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список туристов</h3>
+    <a class="button" href="tourists/new">Добавить туриста</a>
+    <a class="button secondary" href="/menu">Назад</a>
+  </div>
+  <% @tourist_list.each do |tourist, id|%>
+  <div class=" card cell large-4">
+    <div class="card-divider">
+      <%=tourist.surname%> <%=tourist.name%> <%=tourist.patronymic%>
+    </div>
+    <div class="card-section">
+      <p>
+        <a class="button" href="/tourists/<%=tourist.id%>">К списку желаний</a>
+      </p>
+    </div>
+  </div>
+  <%end%>
+</div>

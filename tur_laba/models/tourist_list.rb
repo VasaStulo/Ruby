@@ -46,6 +46,8 @@ class TouristList
     end.to_h
   end
 
-
+  def all_tourists
+    @tourist_list.values
+  end
 
 end
