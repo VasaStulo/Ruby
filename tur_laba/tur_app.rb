@@ -17,7 +17,8 @@ class App < Roda
   end
 
   opts[:tours] = TourList.new
-   
+  opts[:tourists] = TouristList.new
+
   route do |r|
     r.public if [:serve_static]
 
