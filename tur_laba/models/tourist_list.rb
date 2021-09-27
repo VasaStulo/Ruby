@@ -50,6 +50,12 @@ class TouristList
     @tourist_list.values
   end
    
-  
+  def tourist_by_id(id)
+    @tourist_list[id]
+  end
+
+  def delete_tourist(id)
+    @tourist_list.delete(id)
+  end
 
 end

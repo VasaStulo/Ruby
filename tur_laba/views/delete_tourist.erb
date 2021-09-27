@@ -1,6 +1,6 @@
 <div class="grid-x grid-margin-x">
   <div class="cell large-12 warning">
-    Вы действительно хотите удалить тур <%= @tour.country%> <%= @tour.city%>?
+    Вы действительно хотите удалить туриста <%= @tourist.surname%> <%= @tourist.name%> <%= @tourist.patronymic%>?
   </div>
 </div>
 
@@ -11,7 +11,7 @@
   </div>
   <div class="large-12 cell">
     <%= f.button(value: 'Удалить',class: 'button warning')%>
-    <a href="/tours/<%= @tour.id %>" class="button secondary">Отмена</a>
+    <a href="/tourists/<%= @tourist.id %>" class="button secondary">Отмена</a>
   </div>
 </div>
 <%end%>

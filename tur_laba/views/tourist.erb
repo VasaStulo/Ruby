@@ -1,0 +1,18 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о туристе</h3>
+  
+    <p>ФИО: <%= @tourist.surname%> <%= @tourist.name%> <%= @tourist.patronymic%></p>
+    <p>Пожелания:</p>
+     <p>1) Cтрана
+     2) Обязательная достопримечательность
+     3) Вид проезда
+     4) Диапазон количества дней
+     5) Диапазон приемлемой стоимости</p>
+      <%@tourist.list_of_wishes.each do |id, wish| %>
+      <p><%=id+1%>) <%= wish%></p>
+       <%end%>
+    <a class="button secondary" href="/tourists">Назад к списку</a>
+    <a class="button alert" href="<%="#{@tourist.id}"%>/delete">Удалить</a>
+  </div>
+</div>

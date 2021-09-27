@@ -80,7 +80,28 @@ class App < Roda
         @tourist_list = opts[:tourists].all_tourists
       view('tourists')
       end
+
+      r.on Integer do |tourist_id|
+        @tourist = opts[:tourists].tourist_by_id(tourist_id)
+        r.is do
+          view('tourist')
+        end
+        r.on 'delete' do
+          r.get do
+            @parameters = {}
+            view('delete_tourist')
+          end
+          r.post do
+            @parameters = DryResultFormeWrapper.new(TouristDeleteSchema.call(r.params))
+            if @parameters.success?
+              opts[:tourists].delete_tourist(tourist_id)
+              r.redirect('/tourists')
+            else
+              view('delete_tourist')
+            end
+          end
+        end
+      end
     end
-    
   end
 end
