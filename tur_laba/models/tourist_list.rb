@@ -49,5 +49,7 @@ class TouristList
   def all_tourists
     @tourist_list.values
   end
+   
+  
 
 end

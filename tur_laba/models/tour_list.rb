@@ -49,4 +49,25 @@ class TourList
   def all_tours
     @tour_list.values
   end
+
+  def tour_by_id(id)
+    @tour_list[id]
+  end
+
+  def tour_add(parameters)
+   
+    tour_id = @tour_list.keys.max + 1
+    sight_list = get_sight_list(parameters[:sight])
+    @tour_list[tour_id] = Tour.new(
+      tour_id,
+      parameters[:country],
+      parameters[:city],
+      parameters[:count_days],
+      parameters[:transport],
+      parameters[:cost],
+      parameters[:max_people],
+      sight_list
+    )
+  end
+
 end

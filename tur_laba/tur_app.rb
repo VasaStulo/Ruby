@@ -32,24 +32,39 @@ class App < Roda
 
     r.on 'tours' do
       r.is do
-        # p  opts[:tours]
         @tour_list = opts[:tours].all_tours
-      view('tours')
+        view('tours')
       end
-
-    end
-
+      r.on Integer do |tour_id|
+        @tour = opts[:tours].tour_by_id(tour_id)
+        r.is do
+          view('tour')
+        end
+      end
+        r.on 'new' do
+            r.get do
+              @parameters = {}
+              view('new_tour')
+            end
+            r.post do
+              @parameters = DryResultFormeWrapper.new(TourFormSchema.call(r.params))
+                if @parameters.success?
+                  opts[:tours].tour_add(@parameters)
+                  p opts[:tours]
+                  r.redirect "/tours"
+                else
+                  view('new_tour')
+                end
+            end
+          end
+      end
+   
     r.on 'tourists' do
       r.is do
-        # p  opts[:tours]
         @tourist_list = opts[:tourists].all_tourists
       view('tourists')
       end
-
     end
-
     
-
-
   end
 end

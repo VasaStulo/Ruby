@@ -74,7 +74,7 @@ class LibraryApplication < Roda
             end
           end
         end
-      end
+    end
 
       r.on 'new' do
         r.get do

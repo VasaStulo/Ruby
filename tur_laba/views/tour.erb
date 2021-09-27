@@ -1,0 +1,17 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о туре</h3>
+  
+    <p>Страна: <%= @tour.country%></p>
+    <p>Город: <%= @tour.city%></p>
+    <p>Максимальное количество дней: <%= @tour.count_days%></p>
+    <p>Транспорт: <%= @tour.transport%></p>
+    <p>Стоимость: <%= @tour.cost%></p>
+    <p>Максимальное количество людей: <%= @tour.max_people%></p>
+    <p>Достопримечательности: 
+      <%@tour.sight.each do |id, sight| %>
+      <p><%=id+1%>) <%= sight%></p>
+       <%end%>
+    <a class="button secondary" href="/tours">Назад к списку</a>
+  </div>
+</div>

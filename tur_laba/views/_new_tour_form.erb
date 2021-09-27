@@ -1,0 +1,29 @@
+<% form({method: :post},{obj: @parameters}) do |f|%>
+<div class="grid-x grid-margin-x">
+  <div class="large-12 cell">
+    <%= f.input(:country, type: :text,label:'Страна',placeholder:'Великобритания')%>
+  </div>  
+  <div class="large-12 cell">
+    <%= f.input(:city, type: :text,label:'Город',placeholder:'Лондон')%>
+  </div>
+    <div class="large-12 cell">
+    <%= f.input(:max_people, type: :number,label:'Максимальное количество людей',placeholder:'10')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.input(:count_days, type: :number,label:'Максимальное количество дней',placeholder:'40')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.input(:transport, type: :text,label:'Транспорт',placeholder:'Самолет')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.input(:cost, type: :number,label:'Стоимость',placeholder:'40000')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.input(:sight, type: :text,label:'Достопримечательности',placeholder:'Лувр;Елисеевские поля')%>
+  </div>
+  <div class="large-12 cell">
+    <%= f.button(value: form_type,class: 'button')%>
+    <a href="<%=back_location%>" class="button secondary">Отмена</a>
+  </div>
+</div>
+<%end%>
