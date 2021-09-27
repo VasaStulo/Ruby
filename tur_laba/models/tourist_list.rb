@@ -58,4 +58,16 @@ class TouristList
     @tourist_list.delete(id)
   end
 
+  def tourist_add(parameters)
+    tourist_id = @tourist_list.keys.max + 1
+    wish_list = get_wishes_list(parameters[:list_of_wishes])
+    @tourist_list[tourist_id] = Tourist.new(
+      tourist_id,
+      parameters[:surname],
+      parameters[:name],
+      parameters[:patronymic],
+      wish_list
+    )
+  end
+
 end

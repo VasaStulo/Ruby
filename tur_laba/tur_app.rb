@@ -102,6 +102,24 @@ class App < Roda
           end
         end
       end
+      r.on 'new' do
+        r.get do
+          @parameters = {}
+          view('new_tourist')
+        end
+          r.post do
+            @parameters = DryResultFormeWrapper.new(TouristFormSchema.call(r.params))
+              if @parameters.success?
+                p @parameters
+                opts[:tourists].tourist_add(@parameters)
+                p opts[:tourists]
+                r.redirect "/tourists"
+              else
+                view('new_tourist')
+              end
+          end
+        end
+
     end
   end
 end
