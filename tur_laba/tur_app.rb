@@ -40,6 +40,22 @@ class App < Roda
         r.is do
           view('tour')
         end
+        
+        r.on 'delete' do
+          r.get do
+            @parameters = {}
+            view('delete_tour')
+          end
+          r.post do
+            @parameters = DryResultFormeWrapper.new(TourDeleteSchema.call(r.params))
+            if @parameters.success?
+              opts[:tours].delete_tour(tour_id)
+              r.redirect('/tours')
+            else
+              view('delete_tour')
+            end
+          end
+        end
       end
         r.on 'new' do
             r.get do

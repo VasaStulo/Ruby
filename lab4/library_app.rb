@@ -118,17 +118,6 @@ class LibraryApplication < Roda
             view('penalty')
           end
         end
-        # r.on 'filter_books' do
-        #   r.get do
-        #     p r.params['genre']
-        #     @filter_books = if r.params['genre'].nil?
-        #                       @books_list
-        #                     else
-        #                       opts[:books].filter_by_genre(r.params['genre'])
-        #                     end
-        #     view('filter_books')
-        #   end
-        # end
 
         r.on 'book_add' do
           r.get do

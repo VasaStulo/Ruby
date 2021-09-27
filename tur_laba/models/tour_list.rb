@@ -55,7 +55,6 @@ class TourList
   end
 
   def tour_add(parameters)
-   
     tour_id = @tour_list.keys.max + 1
     sight_list = get_sight_list(parameters[:sight])
     @tour_list[tour_id] = Tour.new(
@@ -68,6 +67,10 @@ class TourList
       parameters[:max_people],
       sight_list
     )
+  end
+
+  def delete_tour(id)
+    @tour_list.delete(id)
   end
 
 end
