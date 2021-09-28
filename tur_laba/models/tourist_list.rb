@@ -22,7 +22,6 @@ class TouristList
     @tourist_list = @tourist_list.map do |tourist|
       [tourist.id, tourist]
     end.to_h
-    # p @tourist_list
   end
 
   def push_to_tourists(id, row)
@@ -68,6 +67,19 @@ class TouristList
       parameters[:patronymic],
       wish_list
     )
+  end
+
+  def group_by_counry_and_transport
+    group = Hash.new
+    @tourist_list.values.each do |tourist|
+      if group.has_key?("#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}")
+        group["#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}"].push(tourist)
+
+      else
+        group["#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}"] = [tourist]
+      end
+    end
+    group
   end
 
 end

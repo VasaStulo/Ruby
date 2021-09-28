@@ -110,16 +110,23 @@ class App < Roda
           r.post do
             @parameters = DryResultFormeWrapper.new(TouristFormSchema.call(r.params))
               if @parameters.success?
-                p @parameters
                 opts[:tourists].tourist_add(@parameters)
-                p opts[:tourists]
                 r.redirect "/tourists"
               else
                 view('new_tourist')
               end
           end
         end
+      r.on 'group' do
+        @group = opts[:tourists].group_by_counry_and_transport
 
+        @group.each do |group, id|
+          p id
+        end
+
+        view('group_tourist')
+      end
+    
     end
   end
 end

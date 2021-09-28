@@ -1,0 +1,20 @@
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell">
+        <h3>Туристические группы, сформированые исходя из предпочтений страны и вида транспорта</h3>
+            <a class="button secondary" href="/tourists">Назад</a>
+      </div>  
+    </div> 
+  <% @group.each do |key, value|%>
+  <div class=" card cell large-4">
+    <div class="card-divider">
+      <%=key%> 
+    </div>
+    <% value.each do |tourist, id|%>
+     <div class="card-section">
+      <p><%=tourist.surname%> <%=tourist.name%> <%=tourist.patronymic%> </p>
+    </div>
+     <%end%>
+  </div>
+  <%end%>
+</div>   
