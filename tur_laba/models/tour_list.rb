@@ -73,4 +73,33 @@ class TourList
     @tour_list.delete(id)
   end
 
+  def select_tur(tourist)
+    arr= []
+    @tour_list.each do |id,tour|
+      if tour.country == tourist.list_of_wishes[0] && tour.transport == tourist.list_of_wishes[2] && select_by_money(tourist,tour) && select_by_days(tourist,tour) && select_by_place(tourist,tour)
+        arr.push(tour)
+        # p arr
+      end
+    end
+    return arr
+  end
+  
+  def select_by_money(tourist,tour)
+    arr = tourist.list_of_wishes[4].split('-')
+    return tour.cost.to_i >= arr[0].to_i && tour.cost.to_i <= arr[1].to_i
+  end
+  
+  def select_by_days(tourist,tour)
+    arr = tourist.list_of_wishes[3].split('-')
+    return tour.count_days.to_i >= arr[0].to_i && tour.count_days.to_i <= arr[1].to_i
+  end
+
+  def select_by_place(tourist,tour)
+    tour.sight.each do |id, sight|
+      if tourist.list_of_wishes[1] == sight
+        return true
+      end
+    end
+  end
+  
 end

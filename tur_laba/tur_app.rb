@@ -101,6 +101,11 @@ class App < Roda
             end
           end
         end
+        r.on 'select' do
+         @tourist = opts[:tourists].tourist_by_id(tourist_id)
+         @select_tour = opts[:tours].select_tur(@tourist)
+          view('select_tur')
+        end
       end
       r.on 'new' do
         r.get do
@@ -119,11 +124,6 @@ class App < Roda
         end
       r.on 'group' do
         @group = opts[:tourists].group_by_counry_and_transport
-
-        @group.each do |group, id|
-          p id
-        end
-
         view('group_tourist')
       end
     
