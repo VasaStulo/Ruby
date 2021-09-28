@@ -74,7 +74,6 @@ class TouristList
     @tourist_list.values.each do |tourist|
       if group.has_key?("#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}")
         group["#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}"].push(tourist)
-
       else
         group["#{tourist.list_of_wishes[0]},#{tourist.list_of_wishes[2]}"] = [tourist]
       end
@@ -82,6 +81,5 @@ class TouristList
     group
   end
 
-  
 
 end

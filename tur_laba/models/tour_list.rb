@@ -101,5 +101,72 @@ class TourList
       end
     end
   end
-  
+
+  def list_of_country
+    arr = @tour_list.values.map{|x| x.country}.uniq
+  end
+
+  def count_tour_by_country(country)
+    k = 0
+    @tour_list.each do |id, tour|
+      if tour.country == country
+          k+=1
+      end
+    end
+    return k
+  end
+   
+  def count_city_for_visit(country)
+    k = 0
+    arr = []
+    @tour_list.each do |id, tour|
+      if tour.country == country
+          arr.push(tour.city)
+      end
+    end
+    k = arr.length 
+    return k
+  end
+
+  def count_sight_by_country(country)
+    k=0
+    arr = []
+    @tour_list.each do |id, tour|
+      if tour.country == country
+        tour.sight.each do |id, sight|
+          arr.push(sight)
+        end
+      end
+    end
+    k = arr.uniq.length
+  end
+
+  def average_days(country)
+    sum = 0
+    k = count_tour_by_country(country)
+    @tour_list.each do |id, tour|
+      if tour.country == country
+        sum += tour.count_days.to_i
+      end
+    end
+    aver = sum/k
+    return aver
+  end
+
+  def common_transport(country)
+    h = Hash.new
+    k =''
+      @tour_list.each do |id, tour|
+      if tour.country == country
+        if h.has_key?("#{tour.transport}")
+          h["#{tour.transport}"]+=1
+        else 
+          h["#{tour.transport}"] = 1
+        end
+      end
+    end
+    k= h.key(h.values.max)
+    return k
+  end
+
 end

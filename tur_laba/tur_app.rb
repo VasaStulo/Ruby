@@ -72,8 +72,19 @@ class App < Roda
                   view('new_tour')
                 end
             end
+        end
+          r.on 'statistics' do
+            @country_list = opts[:tours].list_of_country
+            @country_list.each do |country|
+              @count_tour = opts[:tours].count_tour_by_country(country)
+              @count_city = opts[:tours].count_city_for_visit(country)
+              @count_sight = opts[:tours].count_sight_by_country(country)
+              @average_days = opts[:tours].average_days(country)
+              p @common_transport = opts[:tours].common_transport(country)
+
+            end
           end
-      end
+    end
    
     r.on 'tourists' do
       r.is do
