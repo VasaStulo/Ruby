@@ -168,5 +168,16 @@ class TourList
     k= h.key(h.values.max)
     return k
   end
-
+  
+  def average_cost(country)
+    sum=0
+        k = count_tour_by_country(country)
+    @tour_list.each do |id, tour|
+      if tour.country == country
+        sum += tour.cost.to_i
+      end
+    end
+    aver = sum/k
+    return aver
+  end
 end

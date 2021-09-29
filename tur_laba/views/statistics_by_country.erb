@@ -1,0 +1,22 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Статистика по странам</h3>
+  </div>
+  <% @country_list.each do |country|%>
+    <div class=" card cell large-4">
+      <div class="card-divider">
+        <%=country%> 
+      </div>
+      <div class="card-section">
+        <p>Количество туров: <%=@tours.count_tour_by_country(country)%> </p>
+        <p>Количество городов для посещения: <%=@tours.count_city_for_visit(country)%> </p>
+        <p>Количество достопримечательностей: <%=@tours.count_sight_by_country(country)%> </p>
+        <p>Среднее количество дней: <%=@tours.average_days(country)%> </p>
+        <p>Самый распространённый вид транспорта: <%=@tours.common_transport(country)%> </p>
+        <p>Средняя стоимость: <%=@tours.average_cost(country)%> рублей</p>  
+        <p>Количество желающих туристов: <%=@tourists.count_tourist(country)%> </p>
+        <p>Самый распространённый вид транспорта среди желающих поехать в эту страну туристов: <%=@tourists.popular_transport(country)%> </p>       
+      </div>
+    </div>
+  <%end%>
+</div>   

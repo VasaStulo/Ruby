@@ -81,5 +81,29 @@ class TouristList
     group
   end
 
-
+  def count_tourist(country)
+    k = 0
+    @tourist_list.values.each do |tourist|
+      if tourist.list_of_wishes[0] == country
+         k += 1
+      end
+    end 
+    return k
+  end
+  
+  def popular_transport(country)
+        h = Hash.new
+    k =''
+      @tourist_list.values.each do |tourist|
+      if tourist.list_of_wishes[0] == country
+        if h.has_key?("#{tourist.list_of_wishes[0]}")
+          h["#{tourist.list_of_wishes[2]}"]+=1
+        else 
+          h["#{tourist.list_of_wishes[2]}"] = 1
+        end
+      end
+    end
+    k= h.key(h.values.max)
+    return k
+  end
 end

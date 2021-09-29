@@ -66,7 +66,6 @@ class App < Roda
               @parameters = DryResultFormeWrapper.new(TourFormSchema.call(r.params))
                 if @parameters.success?
                   opts[:tours].tour_add(@parameters)
-                  p opts[:tours]
                   r.redirect "/tours"
                 else
                   view('new_tour')
@@ -75,14 +74,10 @@ class App < Roda
         end
           r.on 'statistics' do
             @country_list = opts[:tours].list_of_country
-            @country_list.each do |country|
-              @count_tour = opts[:tours].count_tour_by_country(country)
-              @count_city = opts[:tours].count_city_for_visit(country)
-              @count_sight = opts[:tours].count_sight_by_country(country)
-              @average_days = opts[:tours].average_days(country)
-              p @common_transport = opts[:tours].common_transport(country)
-
-            end
+            #нельзя так делать- глобальщину не выносим в вид,но пока так
+            @tours = opts[:tours]
+            @tourists = opts[:tourists]
+            view('statistics_by_country')
           end
     end
    
