@@ -1,0 +1,16 @@
+<div class="grid-container">
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <h3>Для тура "<%=@tour.country%> - <%=@tour.city%>" подходят следующие туристы:</h3>
+        <h4>Ограничение по количеству человек: <%=@tour.max_people%> </h4>
+        <a class="button secondary" href="/tours/<%=@tour.id%>">Назад</a>
+    </div>
+  </div>
+    <legend>Выберите <%=@tour.max_people%> человек в группу </legend>
+    <%@select_tourist.each do |tourist, id|%>
+    <fieldset class="large-7 cell">
+  <input id="checkbox1" type="checkbox"><label for="checkbox1"><%=tourist.surname%> <%=tourist.name%> <%=tourist.patronymic%></label>
+  </fieldset>
+  
+  <%end%>
+</div>

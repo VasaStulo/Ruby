@@ -56,6 +56,25 @@ class App < Roda
             end
           end
         end
+
+        r.on 'create_group' do
+          r.get do
+            @parameters = {}
+            @tour = opts[:tours].tour_by_id(tour_id)
+            @select_tourist = opts[:tourists].select_tourist(@tour)
+            p @select_tourist 
+            view('create_group')
+          end
+          r.post do
+            @parameters = DryResultFormeWrapper.new(TourDeleteSchema.call(r.params))
+            if @parameters.success?
+              opts[:tours].delete_tour(tour_id)
+              r.redirect('/tours')
+            else
+              view('delete_tour')
+            end
+          end
+        end
       end
         r.on 'new' do
             r.get do

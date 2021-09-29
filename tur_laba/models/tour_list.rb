@@ -78,7 +78,6 @@ class TourList
     @tour_list.each do |id,tour|
       if tour.country == tourist.list_of_wishes[0] && tour.transport == tourist.list_of_wishes[2] && select_by_money(tourist,tour) && select_by_days(tourist,tour) && select_by_place(tourist,tour)
         arr.push(tour)
-        # p arr
       end
     end
     return arr

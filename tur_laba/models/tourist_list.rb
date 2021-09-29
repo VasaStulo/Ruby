@@ -92,7 +92,7 @@ class TouristList
   end
   
   def popular_transport(country)
-        h = Hash.new
+    h = Hash.new
     k =''
       @tourist_list.values.each do |tourist|
       if tourist.list_of_wishes[0] == country
@@ -106,4 +106,34 @@ class TouristList
     k= h.key(h.values.max)
     return k
   end
+
+  def select_tourist(tour)
+    arr =[]
+    @tourist_list.values.each do |tourist|
+      if tourist.list_of_wishes[0]==tour.country && select_by_place(tour,tourist) && select_by_money(tour,tourist) && select_by_days(tourist,tour) && tour.transport == tourist.list_of_wishes[2]
+        arr.push(tourist)
+      end
+    end
+    return arr
+  end
+
+  def select_by_place(tour,tourist)
+    tour.sight.each do |id, sight|
+      if tourist.list_of_wishes[1] == sight
+        return true
+      end
+    end
+  end
+
+  def select_by_money(tour,tourist)
+    arr = tourist.list_of_wishes[4].split('-')
+    return tour.cost.to_i >= arr[0].to_i && tour.cost.to_i <= arr[1].to_i
+  end
+  
+  def select_by_days(tourist,tour)
+    arr = tourist.list_of_wishes[3].split('-')
+    return tour.count_days.to_i >= arr[0].to_i && tour.count_days.to_i <= arr[1].to_i
+  end
+
+
 end
