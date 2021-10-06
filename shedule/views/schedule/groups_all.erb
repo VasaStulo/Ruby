@@ -1,0 +1,42 @@
+<div clas="grid-x grid-padding-x">
+  <div class="medium-12 cell">
+    <h3>Выберите группу для просмотра</h3>
+  </div>
+</div>
+<div class="grid-x grid-padding-x">
+  <div class="medium-auto cell">
+    <a href="<%= schedule_path %>">К выбору категории</a>
+  </div>
+</div>
+<div class="large-12 cell">
+  <% form({ method: :get }, { obj: @parameters }) do |f| %>
+
+  <div class="grid-x grid-margin-x">
+    <% if @parameters.failure? %>
+    <div class="large-12 cell callout warning">
+      <p> Параметры фильтра введены неверно, данные не были отфильтрованы</p>
+    </div>
+    <% end %>
+    <div class="large-6 cell">
+      <%= f.input(:name, type: :text, placeholder: 'ИВТ', label: 'Группа') %>
+    </div>
+     <div class="large-12 cell">
+      <%= f.button(value: 'Фильтровать', class: 'hollow button') %>
+    </div>
+    <% end %>
+
+<% if @filter_groups.empty? %>
+  <div class="large-12 cell">
+    <div class="callout">Групп нет!</div>
+  </div>
+<%else%>
+  <div class="grid-x grid-padding-x">
+    <div class="medium-auto">
+      <ul>
+        <% @filter_groups.each do |group, id|%>
+          <li><a href="<%= group_path(group.name) %>"><%=group.name%> </a></li>
+      <%end%>
+      </ul>
+    </div>
+  </div>
+<%end%>

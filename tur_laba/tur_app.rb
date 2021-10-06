@@ -62,7 +62,6 @@ class App < Roda
             @parameters = {}
             @tour = opts[:tours].tour_by_id(tour_id)
             @select_tourist = opts[:tourists].select_tourist(@tour)
-            p @select_tourist 
             view('create_group')
           end
           r.post do

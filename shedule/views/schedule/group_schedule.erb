@@ -1,0 +1,22 @@
+<div clas="grid-x grid-padding-x">
+  <div class="medium-12 cell">
+    <h3>Расписание группы <%= @group_name %></h3>
+  </div>
+</div>
+<div class="grid-x grid-padding-x">
+  <div class="medium-auto cell">
+    <a href="<%= group_all_path %>">К выбору группы</a>
+  </div>
+</div>
+<div class="grid-x grid-padding-x">
+  <%@shedule.each do |day_of_week, value|%>
+  <div class="medium-auto cell">
+    <h4><%=day_of_week%></h4>
+
+    <%value.each do |item|%>
+      <p><%=item.number%>: <%=item.name%>, <%=item.cabinet%>, <%=item.teacher%></p>
+
+    <%end%>
+  </div>
+  <%end%>
+</div>
